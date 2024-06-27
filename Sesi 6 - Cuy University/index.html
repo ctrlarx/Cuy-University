@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuy University Sesi 6</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a onclick="reload()" id="home">HOME</a>
+        <a onclick="darkMode()" id="dark"></a>
+        <a onclick="skyMode()" id="sky"></a>
+      </nav>
+      <h1>Sesi 6 Cuy University</h1>
+      <p id="info" class="info"></p>
+    </div>
+
+    <!-- script -->
+    <script>
+      let body = document.body;
+      const darkLimit = 5;
+      let darkCounter = 0;
+      let darkRemainingLeft;
+      const skyLimit = 5;
+      let skyCounter = 0;
+      let skyRemainingLeft;
+      let info = document.getElementById("info");
+      let dark = document.getElementById("dark");
+      let sky = document.getElementById("sky");
+      let home = document.getElementById("home");
+      dark.textContent = "DARK MODE";
+      sky.textContent = "SKY MODE";
+
+      function darkMode() {
+        if (darkRemainingLeft == 0) {
+          info.textContent = "JATAH FITUR DARK MODE SUDAH HABIS";
+          dark.style.display = "none";
+          home.textContent = "REFRESH";
+          return;
+        }
+
+        if (darkCounter % 2 != 0) {
+          console.log("lightmode");
+          dark.textContent = "DARK MODE";
+        } else if (darkCounter % 2 == 0) {
+          console.log("darkmode");
+          dark.textContent = "LIGHT MODE";
+        }
+
+        darkCounter += 1;
+        darkRemainingLeft = darkLimit - darkCounter;
+
+        // render ke info element
+        info.textContent = `Darkmode dipakai ${darkCounter} kali, tersisa ${darkRemainingLeft}`;
+
+        body.classList.toggle("dark");
+      }
+
+      function skyMode() {
+        if (skyRemainingLeft == 0) {
+          info.textContent = "JATAH FITUR SKY MODE SUDAH HABIS";
+          sky.style.display = "none";
+          home.textContent = "REFRESH";
+          return;
+        }
+
+        if (skyCounter % 2 != 0) {
+          console.log("lightmode");
+        } else if (skyCounter % 2 == 0) {
+          console.log("skymode");
+        }
+
+        skyCounter += 1;
+        skyRemainingLeft = skyLimit - skyCounter;
+
+        // render ke info element
+        info.textContent = `Skymode dipakai ${skyCounter} kali, tersisa ${skyRemainingLeft}`;
+
+        body.classList.toggle("sky");
+      }
+
+      function reload() {
+        location.reload();
+      }
+    </script>
+    <!-- script end-->
+  </body>
+</html>

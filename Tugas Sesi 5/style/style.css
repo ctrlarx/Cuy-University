@@ -1,0 +1,10 @@
+body {
+  background-color: #3def96;
+}
+
+#root {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  font-size: 2em;
+  height: 100vh;
+}
